@@ -1,0 +1,53 @@
+@extends('layout.auth')
+
+@section('title', __('Вход'))
+
+@section('content')
+
+<div class="login-box">
+    <div class="login-logo"><b>{{ __('Вход') }}</b></div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">{{ __('Войдите в систему') }}</p>
+            <form action=" {{ route("login") }} " method="post">
+                @csrf
+                @method('POST')
+                <div class="input-group mb-3">
+                    <input name="email" type="email" class="form-control @error("email") border-danger @enderror" placeholder="{{ __('Электронная почта') }}" value="{{old('email')}}">
+                    <div class="input-group-append">
+                        <div class="input-group-text @error("email") border-danger @enderror">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                @error("email")
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <div class="input-group mb-3">
+                    <input name="password" type="password" class="form-control @error("password") border-danger @enderror" placeholder="{{ __('Пароль') }}">
+                    <div class="input-group-append">
+                        <div class="input-group-text  @error("password") border-danger @enderror">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                @error("password")
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <a href=" {{ route("register") }} " class="text-center">{{ __('Регистрация') }}</a>
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">{{ __('Вход') }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+@endsection
