@@ -28,6 +28,7 @@ class LoginUserController extends Controller
 
     public function logout()
     {
-        //
+        auth("web")->logout();
+        return redirect(route("login"));
     }
 }
