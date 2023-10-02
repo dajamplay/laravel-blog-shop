@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\LoginUserRequest;
 use App\Providers\RouteServiceProvider;
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -29,6 +28,8 @@ class LoginUserController extends Controller
                'email' => trans('auth.failed')
             ]);
         }
+
+        $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

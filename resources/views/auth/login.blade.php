@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <p class="mb-1">
-                    <a href=" {{ route("register") }} " class="text-center">{{ __('Забыли пароль?') }}</a>
+                    <a href="#" class="text-center">{{ __('Забыли пароль?') }}</a>
                 </p>
                 <p class="mb-1">
                     <a href=" {{ route("register") }} " class="text-center">{{ __('Регистрация') }}</a>
