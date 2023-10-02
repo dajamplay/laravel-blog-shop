@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\LoginUserRequest;
+use App\Providers\RouteServiceProvider;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class LoginUserController extends Controller
@@ -13,20 +17,23 @@ class LoginUserController extends Controller
         return view('auth.login');
     }
 
-    public function store(LoginUserRequest $request)
+    /**
+     * @throws ValidationException
+     */
+    public function store(LoginUserRequest $request) : RedirectResponse
     {
-        $data = $request->validated();
+        $credentials = $request->validated();
 
-        if(auth("web")->attempt($data)) {
-            return 'Вход выполнен успешно';
+        if(!auth("web")->attempt($credentials, $request->boolean('remember'))) {
+            throw ValidationException::withMessages([
+               'email' => trans('auth.failed')
+            ]);
         }
 
-        return redirect(route("login"))->withErrors([
-            "email" => __("Неверный логин или пароль.")
-        ]);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function logout()
+    public function logout() : RedirectResponse
     {
         auth("web")->logout();
         return redirect(route("login"));

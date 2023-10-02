@@ -6,7 +6,6 @@
 
 <div class="login-box">
     <div class="login-logo"><b>{{ __('Вход') }}</b></div>
-    <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">{{ __('Войдите в систему') }}</p>
@@ -37,17 +36,25 @@
                 @enderror
                 <div class="row">
                     <div class="col-8">
-                        <p class="mb-0">
-                            <a href=" {{ route("register") }} " class="text-center">{{ __('Регистрация') }}</a>
-                        </p>
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">
+                                Запомнить меня
+                            </label>
+                        </div>
                     </div>
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">{{ __('Вход') }}</button>
                     </div>
                 </div>
+                <p class="mb-1">
+                    <a href=" {{ route("register") }} " class="text-center">{{ __('Забыли пароль?') }}</a>
+                </p>
+                <p class="mb-1">
+                    <a href=" {{ route("register") }} " class="text-center">{{ __('Регистрация') }}</a>
+                </p>
             </form>
         </div>
-        <!-- /.login-card-body -->
     </div>
 </div>
 @endsection

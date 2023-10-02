@@ -6,11 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware("auth")->group( function () {
 
-    Route::post('/logout', [LoginUserController::class, 'logout'])
-        ->name('logout');
+    Route::post('/logout', [LoginUserController::class, 'logout'])->name('logout');
 
-    Route::get('/home', function () {
-        return 'Is auth user';
+    Route::get('/dashboard', function () {
+        return 'Is auth user... Dashboard...';
     });
 
 });
