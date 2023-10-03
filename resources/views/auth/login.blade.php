@@ -9,6 +9,12 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">{{ __('Войдите в систему') }}</p>
+                @if(session('status'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p><i class="icon fas fa-check"></i>{{ session('status') }}</p>
+                    </div>
+                @endif
                 <form action=" {{ route("login") }} " method="post">
                     @csrf
                     @method('POST')
@@ -51,7 +57,7 @@
                         </div>
                     </div>
                     <p class="mb-1">
-                        <a href="#" class="text-center">{{ __('Забыли пароль?') }}</a>
+                        <a href="{{ route("password.request") }}" class="text-center">{{ __('Забыли пароль?') }}</a>
                     </p>
                     <p class="mb-1">
                         <a href=" {{ route("register") }} " class="text-center">{{ __('Регистрация') }}</a>

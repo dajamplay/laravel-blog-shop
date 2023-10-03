@@ -9,7 +9,23 @@
     <link rel="stylesheet" href="/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition register-page">
+<body>
+
+@guest
+    <p>
+        <a href="{{ route('login') }}">login</a>
+    </p>
+    <p>
+        <a href="{{ route('register') }}">register</a>
+    </p>
+@endguest
+
+@auth
+    <form action="{{ route('logout') }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary">logout</button>
+    </form>
+@endauth
 
 @yield('content')
 
