@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\ResetPasswordUserRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -19,7 +20,7 @@ class ResetPasswordController extends Controller
         ]);
     }
 
-    public function store(ResetPasswordUserRequest $request)
+    public function store(ResetPasswordUserRequest $request) : RedirectResponse
     {
         $data = $request->validated();
 
