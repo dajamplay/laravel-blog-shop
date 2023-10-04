@@ -39,10 +39,8 @@ class LoginUserController extends Controller
     {
         auth("web")->logout();
 
-        //session id refresh
         $request->session()->invalidate();
 
-        //csrf token refresh
         $request->session()->regenerateToken();
 
         return redirect(route('home'));

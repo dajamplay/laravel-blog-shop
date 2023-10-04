@@ -7,6 +7,7 @@ use App\Http\Requests\Web\Auth\RegisterUserRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 //use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
@@ -17,7 +18,7 @@ class RegisterUserController extends Controller
         return view('auth.register');
     }
 
-    public function store(RegisterUserRequest $request)
+    public function store(RegisterUserRequest $request) : RedirectResponse
     {
         $data = $request->validated();
 
