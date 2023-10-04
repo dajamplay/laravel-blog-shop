@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\RegisterRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-//use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
-class RegisterUserController extends Controller
+class RegisterController extends Controller
 {
     public function create() : View
     {
@@ -29,9 +29,9 @@ class RegisterUserController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        auth("web")->login($user);
+        event(new Registered($user));
 
-        //event(new Registered($user));
+        auth("web")->login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

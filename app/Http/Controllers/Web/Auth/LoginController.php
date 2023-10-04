@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
-class LoginUserController extends Controller
+class LoginController extends Controller
 {
     public function create() : View
     {

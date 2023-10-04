@@ -2,26 +2,38 @@
 
 use App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Web\Main;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware("auth")->group( function () {
+Route::middleware('auth')->group( function () {
 
-    Route::post('/logout', [Auth\LoginUserController::class, 'destroy'])->name('logout');
+    Route::post('/logout', [Auth\LoginController::class, 'destroy'])
+        ->name('logout');
+
+    Route::get('/email/verify/{id}/{hash}', Auth\VerifyEmailController::class)
+        ->middleware('signed')
+        ->name('verification.verify');
+
+    Route::get('/email/verify', Auth\EmailVerificationController::class)
+        ->name('verification.notice');
+
+    Route::post('/email/verification-notification', Auth\EmailVerificationNotificationController::class)
+        ->name('verification.send');
 
     Route::get('/dashboard', function () {
         return 'Is auth user... Dashboard...';
-    });
+    })->middleware('verified');
 
 });
 
-Route::middleware("guest")->group( function () {
+Route::middleware('guest')->group( function () {
 
-    Route::get('/login', [Auth\LoginUserController::class, 'create'])->name('login');
-    Route::post('/login', [Auth\LoginUserController::class, 'store']);
+    Route::get('/login', [Auth\LoginController::class, 'create'])->name('login');
+    Route::post('/login', [Auth\LoginController::class, 'store']);
 
-    Route::get('/register', [Auth\RegisterUserController::class, 'create'])->name('register');
-    Route::post('/register', [Auth\RegisterUserController::class, 'store']);
+    Route::get('/register', [Auth\RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [Auth\RegisterController::class, 'store']);
 
     Route::get('/forgot-password', [Auth\ForgotPasswordController::class, 'create'])->name('password.request');
     Route::post('/forgot-password', [Auth\ForgotPasswordController::class, 'store'])->name('password.email');

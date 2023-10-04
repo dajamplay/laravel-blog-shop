@@ -19,7 +19,6 @@ class UserFactory extends Factory
             'last_name' => fake()->lastName(),
             'registered_at' => fake()->dateTimeThisYear(),
             'birthday' => fake()->dateTimeThisCentury(),
-
             'remember_token' => Str::random(10),
         ];
     }
