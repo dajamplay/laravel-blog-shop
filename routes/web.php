@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Web\Main;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group( function () {
@@ -29,17 +27,23 @@ Route::middleware('auth')->group( function () {
 
 Route::middleware('guest')->group( function () {
 
-    Route::get('/login', [Auth\LoginController::class, 'create'])->name('login');
+    Route::get('/login', [Auth\LoginController::class, 'create'])
+        ->name('login');
     Route::post('/login', [Auth\LoginController::class, 'store']);
 
-    Route::get('/register', [Auth\RegisterController::class, 'create'])->name('register');
+    Route::get('/register', [Auth\RegisterController::class, 'create'])
+        ->name('register');
     Route::post('/register', [Auth\RegisterController::class, 'store']);
 
-    Route::get('/forgot-password', [Auth\ForgotPasswordController::class, 'create'])->name('password.request');
-    Route::post('/forgot-password', [Auth\ForgotPasswordController::class, 'store'])->name('password.email');
+    Route::get('/forgot-password', [Auth\ForgotPasswordController::class, 'create'])
+        ->name('password.request');
+    Route::post('/forgot-password', [Auth\ForgotPasswordController::class, 'store'])
+        ->name('password.email');
 
-    Route::get('/reset-password', [Auth\ResetPasswordController::class, 'create'])->name('password.reset');
-    Route::post('/reset-password', [Auth\ResetPasswordController::class, 'store'])->name('password.update');
+    Route::get('/reset-password', [Auth\ResetPasswordController::class, 'create'])
+        ->name('password.reset');
+    Route::post('/reset-password', [Auth\ResetPasswordController::class, 'store'])
+        ->name('password.update');
 
 });
 
