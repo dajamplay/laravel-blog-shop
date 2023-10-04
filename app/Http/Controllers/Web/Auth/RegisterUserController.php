@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Auth\RegisterUserRequest;
+use App\Http\Requests\Web\Auth\RegisterRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 //use Illuminate\Auth\Events\Registered;
@@ -18,7 +18,7 @@ class RegisterUserController extends Controller
         return view('auth.register');
     }
 
-    public function store(RegisterUserRequest $request) : RedirectResponse
+    public function store(RegisterRequest $request) : RedirectResponse
     {
         $data = $request->validated();
 

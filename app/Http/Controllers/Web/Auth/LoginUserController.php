@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Auth\LoginUserRequest;
+use App\Http\Requests\Web\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class LoginUserController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(LoginUserRequest $request) : RedirectResponse
+    public function store(LoginRequest $request) : RedirectResponse
     {
         $credentials = $request->validated();
 

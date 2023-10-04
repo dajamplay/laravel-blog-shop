@@ -4,7 +4,7 @@ namespace App\Http\Requests\Web\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ForgotPasswordUserRequest extends FormRequest
+class ForgotPasswordRequest extends FormRequest
 {
     public function authorize(): bool
     {
