@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Web\Main;
 use Illuminate\Support\Facades\Route;
 
-require_once './web/auth.php';
+use App\Http\Controllers\Web\Main;
+use App\Http\Controllers\Web\Dashboard;
+
+
+require_once base_path('routes/web/auth.php');
 
 Route::middleware('auth')->group( function () {
 
-    Route::get('/dashboard', function () {
-        return 'Is auth user... Dashboard...';
-    })->middleware('verified');
+    Route::get('/dashboard', [Dashboard\DashboardController::class, 'index'])->middleware('verified');
 
 });
 
