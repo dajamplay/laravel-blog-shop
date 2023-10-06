@@ -7,7 +7,7 @@ use Illuminate\View\View;
 
 class PublicController extends Controller
 {
-    public function home() : View
+    public function index() : View
     {
         return view('public.index');
     }
