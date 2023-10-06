@@ -1,17 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Web\Public;
-use App\Http\Controllers\Web\Dashboard;
-
-
 require_once base_path('routes/web/auth.php');
 
-Route::middleware('auth')->group( function () {
+require_once base_path('routes/web/dashboard.php');
 
-    Route::get('/dashboard', [Dashboard\DashboardController::class, 'index'])->middleware('verified');
+require_once base_path('routes/web/public.php');
 
-});
 
-Route::get('/', [Public\PublicController::class, 'home'])->name('home');
