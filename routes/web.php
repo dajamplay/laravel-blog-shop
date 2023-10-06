@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Web\Main;
+use App\Http\Controllers\Web\Public;
 use App\Http\Controllers\Web\Dashboard;
 
 
@@ -14,4 +14,4 @@ Route::middleware('auth')->group( function () {
 
 });
 
-Route::get('/', [Main\MainController::class, 'home'])->name('home');
+Route::get('/', [Public\PublicController::class, 'home'])->name('home');

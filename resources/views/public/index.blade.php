@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('public.layouts.main')
 
 @section('title', __('Главная'))
 

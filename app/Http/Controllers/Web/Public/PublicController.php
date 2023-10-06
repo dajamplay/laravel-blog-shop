@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Web\Main;
+namespace App\Http\Controllers\Web\Public;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
-class MainController extends Controller
+class PublicController extends Controller
 {
     public function home() : View
     {
-        return view('main.home');
+        return view('public.index');
     }
 }
