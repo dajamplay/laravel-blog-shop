@@ -13,6 +13,6 @@ Route::prefix('dashboard')
 
     Route::get('/', [Dashboard\DashboardController::class, 'index'])->name('index');
 
-    Route::resource('users', Dashboard\User\UserUserController::class);
+    Route::resource('users', Dashboard\User\DashboardUserController::class);
 
 });
