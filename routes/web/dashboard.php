@@ -1,10 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Dashboard;
+use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'verified'])->group( function () {
+Route::prefix('dashboard')
+    ->name('dashboard.')
+    ->middleware([
+        'auth',
+        'verified',
+    ])
+    ->group( function () {
 
-    Route::get('/dashboard', [Dashboard\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/', [Dashboard\DashboardController::class, 'index'])->name('index');
+
+    Route::resource('users', Dashboard\User\UserUserController::class);
 
 });

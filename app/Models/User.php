@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
-
     protected $fillable = [
         'email',
         'password',
@@ -33,4 +33,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    public function scopeWithoutAdmins(Builder $query) : Builder
+    {
+        //return $query->where('role', '!=', 'admin');
+        return $query->whereRole('user');
+    }
+
+    public function isAdmin() : bool
+    {
+        return $this->role === 'admin';
+    }
 }

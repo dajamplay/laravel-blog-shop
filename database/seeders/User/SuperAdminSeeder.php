@@ -23,7 +23,8 @@ class SuperAdminSeeder extends Seeder
             'registered_at' => fake()->dateTimeThisYear(),
             'birthday' => fake()->dateTimeThisCentury(),
             'remember_token' => Str::random(10),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'role' => 'admin'
         ]);
     }
 }

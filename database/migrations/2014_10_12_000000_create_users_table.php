@@ -23,6 +23,8 @@ return new class extends Migration
             $table->datetime('registered_at')->default(now());
             $table->datetime('birthday')->nullable();
 
+            $table->string('role')->default('user');
+
             $table->timestamp('email_verified_at')->nullable();
 
             $table->rememberToken();
