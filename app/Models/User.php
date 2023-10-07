@@ -35,12 +35,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function scopeWithoutAdmins(Builder $query) : Builder
     {
-        //return $query->where('role', '!=', 'admin');
-        return $query->whereRole('user');
+        return $query->where('role', '!=', 'admin');
+        //return $query->whereRole('user');
     }
 
-    public function isAdmin() : bool
-    {
-        return $this->role === 'admin';
-    }
 }
