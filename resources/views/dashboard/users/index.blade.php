@@ -4,7 +4,6 @@
 
 @section('content')
 
-    <h1>Index</h1>
     <table>
         @foreach($users as $user)
             <tr>

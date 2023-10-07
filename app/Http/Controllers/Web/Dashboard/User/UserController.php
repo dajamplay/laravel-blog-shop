@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class DashboardUserController extends BaseUserController
+class UserController extends BaseUserController
 {
     public function index() : View
     {
