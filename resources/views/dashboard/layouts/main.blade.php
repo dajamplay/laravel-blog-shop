@@ -27,7 +27,10 @@
             </li>
 
             <li class="nav-item d-sm-inline-block">
-                <a href=" {{ route('logout') }} " class="nav-link">{{__('Выход')}}</a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="nav-link border-0 bg-transparent">{{__('Выход')}}</button>
+                </form>
             </li>
         </ul>
     </nav>

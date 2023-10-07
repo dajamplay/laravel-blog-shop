@@ -20,4 +20,9 @@ class UserRepository
     {
         return $this->query->paginate(self::PER_PAGE);
     }
+
+    public function update(mixed $attributes, User $user) : bool
+    {
+        return $user->update($attributes);
+    }
 }
