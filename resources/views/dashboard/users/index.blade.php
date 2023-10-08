@@ -7,7 +7,8 @@
     <table>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user->first_name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->last_name }}</td>
                 <td>{{ $user->last_name }}</td>
                 <td><a href="{{ route('dashboard.users.edit', $user) }}">{{ __('Редактировать') }}</a></td>
                 <td><a href="{{ route('dashboard.users.show', $user) }}">{{ __('Подробнее') }}</a></td>
