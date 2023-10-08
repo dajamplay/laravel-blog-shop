@@ -2,10 +2,10 @@
 
     <div class="input-group mb-3">
 
-        <input name={{$name}} type="text"
+        <input name={{$name}} type="{{ $type ?? 'text'}}"
                class="form-control @error($name) border-danger @enderror"
                placeholder="{{$placeholder ?? null}}"
-               value="{{old($name) ?? $model->$name}}"
+               value="{{old($name) ?? $model->$name ?? null}}"
         >
 
         @if(!empty($icon))

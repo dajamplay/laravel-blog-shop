@@ -24,4 +24,9 @@ class UserRepository
     {
         return $user->update($attributes);
     }
+
+    public function store(array $data) : User
+    {
+        return $this->query->create($data);
+    }
 }

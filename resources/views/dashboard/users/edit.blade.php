@@ -11,20 +11,20 @@
 
         <x-dashboard.form.input
             :model="$user"
-            placeholder="Введите имя"
+            placeholder="{{__('Введите имя')}}"
             name="first_name"
             icon="fas fa-user"
         />
 
         <x-dashboard.form.input
             :model="$user"
-            placeholder="Введите фамилию"
+            placeholder="{{__('Введите фамилию')}}"
             name="last_name"
             icon="fas fa-user"
         />
 
         <x-dashboard.form.button
-            value="Сохранить изменения"
+            value="{{__('Сохранить изменения')}}"
         />
 
     </x-dashboard.form>

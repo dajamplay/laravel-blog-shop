@@ -24,9 +24,11 @@ class UserController extends BaseUserController
         return view('dashboard.users.create');
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request) : RedirectResponse
     {
-        //
+        $this->repository->store($request->validated());
+
+        return redirect(route('dashboard.users.index'));
     }
 
     public function show(User $user) : View

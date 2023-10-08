@@ -3,6 +3,12 @@
 @section('title', __('Пользователи'))
 
 @section('content')
+
+    <x-dashboard.ui.button
+        value="{{__('Создать пользователя')}}"
+        link="{{ route('dashboard.users.create') }}"
+    />
+
     <table>
         @foreach($users as $user)
             <tr>
