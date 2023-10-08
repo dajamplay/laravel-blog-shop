@@ -10,17 +10,17 @@
     >
 
         <x-dashboard.form.input
-            :value="old('first_name') ?? $user->first_name"
-            :message="$message ?? null"
+            :model="$user"
             placeholder="Введите имя"
             name="first_name"
+            icon="fas fa-user"
         />
 
         <x-dashboard.form.input
-            :value="old('last_name') ?? $user->last_name"
-            :message="$message ?? null"
-            placeholder="Фамилию"
+            :model="$user"
+            placeholder="Введите фамилию"
             name="last_name"
+            icon="fas fa-user"
         />
 
         <x-dashboard.form.button
