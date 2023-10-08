@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\Paginator;
 
 class UserRepository
 {
@@ -15,7 +16,7 @@ class UserRepository
         $this->query = $model->withoutAdmins();
     }
 
-    public function all()
+    public function all() : Paginator
     {
         return $this->query->paginate(self::PER_PAGE);
     }
