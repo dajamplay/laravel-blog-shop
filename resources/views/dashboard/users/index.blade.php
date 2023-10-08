@@ -27,4 +27,9 @@
             </tr>
         @endforeach
     </table>
+
+    <div class="mt-2">
+        {{ $users->links() }}
+    </div>
+
 @endsection

@@ -4,11 +4,12 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserRepository
 {
     const PER_PAGE = 15;
+
     private Builder $query;
 
     public function __construct(User $model)
@@ -16,7 +17,7 @@ class UserRepository
         $this->query = $model->withoutAdmins();
     }
 
-    public function all() : Paginator
+    public function all() : LengthAwarePaginator
     {
         return $this->query->paginate(self::PER_PAGE);
     }
