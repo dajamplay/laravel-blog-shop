@@ -3,7 +3,9 @@
 @section('title', __('Пользователи'))
 
 @section('content')
+    <x-dashboard.form action="/test">
 
+    </x-dashboard.form>
     <table>
         @foreach($users as $user)
             <tr>
