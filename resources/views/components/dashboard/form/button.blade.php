@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-3">
-        <button type="submit" class="btn btn-primary btn-block">{{$value}}</button>
-    </div>
-</div>
+@props(['text' => ''])
+
+<button {{ $attributes->merge([
+    'type' => 'submit'
+])->class('btn btn-primary')}}>{{$text}}</button>

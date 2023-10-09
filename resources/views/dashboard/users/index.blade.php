@@ -5,8 +5,8 @@
 @section('content')
 
     <x-dashboard.ui.button
-        value="{{__('Создать пользователя')}}"
-        link="{{ route('dashboard.users.create') }}"
+        text="{{__('Создать пользователя')}}"
+        href="{{ route('dashboard.users.create') }}"
     />
 
     <table>

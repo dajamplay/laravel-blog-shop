@@ -1,16 +1,38 @@
-<div>
+@props([
+    'icon' => null,
+    'model',
+    'name' => '',
+    'placeholder' => __('Заполните поле'),
+    'type' => 'text',
+    'label' => null,
+    'errors'
+])
 
-    <div class="input-group mb-3">
+@php
+    $errorBorderDangerClass = $errors->has($name) ? 'border-danger' : '';
+    $errorTextDangerClass = $errors->has($name) ? 'class="text-danger"' : '';
+    $value = old($name) ?? $model->$name ?? '';
+    $label = $label ?? $placeholder;
+@endphp
 
-        <input name={{$name}} type="{{ $type ?? 'text'}}"
-               class="form-control @error($name) border-danger @enderror"
-               placeholder="{{$placeholder ?? null}}"
-               value="{{old($name) ?? $model->$name ?? null}}"
-        >
+<div class="form-group">
 
-        @if(!empty($icon))
+    <label for="{{ $name }}" {!! $errorTextDangerClass !!}>{{ $label}}</label>
+
+    <div class="input-group mb-2">
+
+        <input {{ $attributes->merge([
+            'type' => $type,
+            'value' => $value,
+            'name' => $name,
+            'id' => $name,
+            'placeholder' => $placeholder,
+            'class' => "form-control $errorBorderDangerClass"
+        ])}}>
+
+        @if(isset($icon))
             <div class="input-group-append">
-                <div class="input-group-text @error($name) border-danger @enderror">
+                <div class="input-group-text {{$errorBorderDangerClass}}">
                     <span class="{{ $icon }}"></span>
                 </div>
             </div>
@@ -19,7 +41,7 @@
     </div>
 
     @if($errors->has($name))
-        <p class="text-danger">{{ $errors->first($name) }}</p>
+        <div class="text-danger">{{ $errors->first($name) }}</div>
     @endif
 
 </div>

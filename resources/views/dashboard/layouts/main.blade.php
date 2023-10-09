@@ -20,7 +20,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-sm-inline-block">
-                <a href=" {{ route('dashboard.index') }} " class="nav-link">{{__('Главная')}}</a>
+                <a href=" {{ route('dashboard.index') }} " class="nav-link @linkactive('dashboard.index')">{{__('Главная')}}</a>
             </li>
             <li class="nav-item d-sm-inline-block">
                 <a href="#" class="nav-link"> {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }} </a>

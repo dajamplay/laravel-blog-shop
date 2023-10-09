@@ -5,13 +5,18 @@ namespace App\Providers;
 use App\View\Components\Dashboard\Sidebar;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
-class BladeComponentServiceProvider extends ServiceProvider
+class BladeServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
         Blade::components([
             Sidebar::class => 'sidebar'
         ]);
+
+        Blade::directive('linkactive', function ($route) {
+            return "<?php echo Route::is($route) ? 'active' : $route;?>";
+        });
     }
 }

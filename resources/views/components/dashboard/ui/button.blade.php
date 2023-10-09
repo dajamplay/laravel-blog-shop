@@ -1,5 +1,5 @@
-@props([
-    'link' => '/'
-])
+@props(['text' => '', 'color' => 'primary'])
 
-<a href="{{ $link }}" class="btn btn-primary">{{ $value }}</a>
+<a {{$attributes->merge([
+    'href' => '#',
+])->class("btn btn-{$color}")}}>{{ $text }}</a>
