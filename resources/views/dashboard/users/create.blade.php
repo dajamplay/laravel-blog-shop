@@ -24,24 +24,24 @@
             label="{{__('Электронная почта')}}"
             placeholder="{{__('Введите электронную почту')}}"
             name="email"
-            icon="fas fa-at"
             type="email"
+            icon="fas fa-at"
         />
 
         <x-dashboard.form.input
             label="{{__('Пароль')}}"
             placeholder="{{__('Введите пароль')}}"
             name="password"
-            icon="fas fa-unlock-alt"
             type="password"
+            icon="fas fa-unlock-alt"
         />
 
         <x-dashboard.form.input
             label="{{__('Подтверждение пароля')}}"
             placeholder="{{__('Подтвердите пароль')}}"
             name="password_confirmation"
-            icon="fas fa-unlock-alt"
             type="password"
+            icon="fas fa-unlock-alt"
         />
 
         <x-dashboard.form.button

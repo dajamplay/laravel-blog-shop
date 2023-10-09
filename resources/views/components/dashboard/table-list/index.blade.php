@@ -9,7 +9,7 @@
     <h2>Нет данных</h2>
 @else
 
-    <table {{ $attributes->merge(['class' => 'table table-hover text-nowrap']) }}>
+    <table {{ $attributes->merge(['class' => 'table table-hover text-nowrap mt-3']) }}>
 
         <x-dashboard.table-list.thead :titles="array_keys($titleFields)" :extraButtons="$extraButtons"/>
 
