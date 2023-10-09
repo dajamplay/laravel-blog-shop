@@ -12,4 +12,20 @@
         </tr>
     </table>
 
+    @php
+        $titlesFields = [
+            'ID' => 'id',
+            'Имя' => 'first_name',
+            'Фамилия' => 'last_name',
+            'Электронная почта' => 'email',
+        ];
+    @endphp
+
+    <x-dashboard.table-list
+        :titleFields="$titlesFields"
+        :items="[$user]"
+        :pagination="false"
+        :extraButtons="false"
+    />
+
 @endsection

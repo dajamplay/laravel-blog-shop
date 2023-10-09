@@ -40,9 +40,31 @@
 UI для электронной почты
 
 ## Blade
-### Добавленные директивы
+### Директивы
 ```@linkactive('имя маршрута')```, например ```@linkactive('dahsboadr.index')```.  
-Добавляет ```class="active"``` на месте директивы
+Добавляет ```class="active"``` на месте директивы  
+
+
+### Компоненты
+#### Список  
+```resources/views/components/dashboard/table-list```
+```php
+@php
+    $titlesFields = [
+        'ID' => 'id',
+        'Имя' => 'first_name',
+        'Фамилия' => 'last_name',
+        'Электронная почта' => 'email',
+    ];
+@endphp
+
+<x-dashboard.table-list
+    :titleFields="$titlesFields"
+    :items="$users"
+    :pagination="true" //default false
+    :extraButtons="true" //default false
+/>
+```  
 
 
 

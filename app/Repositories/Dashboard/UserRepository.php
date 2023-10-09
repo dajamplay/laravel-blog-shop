@@ -8,7 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserRepository
 {
-    const PER_PAGE = 15;
+    const PER_PAGE = 10;
 
     private Builder $query;
 
