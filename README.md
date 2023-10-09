@@ -24,7 +24,10 @@
 ```docker exec -it node sh```  
 
 ## WEB  
-Адрес: ```http://localhost:80```
+Адрес: ```http://localhost```
+
+## Dashboard
+Адрес: ```http://localhost/dashboard```
 
 ## PHPMyAdmin  
 Адрес: ```http://localhost:8080```  
