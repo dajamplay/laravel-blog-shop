@@ -9,17 +9,13 @@
         href="{{ route('dashboard.users.create') }}"
     />
 
-    @php
-        $titlesFields = [
+    <x-dashboard.table-list
+        :titleFields="[
             'ID' => 'id',
             'Имя' => 'first_name',
             'Фамилия' => 'last_name',
             'Электронная почта' => 'email',
-        ];
-    @endphp
-
-    <x-dashboard.table-list
-        :titleFields="$titlesFields"
+        ]"
         :items="$users"
         :pagination="true"
         :extraButtons="true"

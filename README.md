@@ -49,20 +49,16 @@ UI для электронной почты
 #### Список  
 ```resources/views/components/dashboard/table-list```
 ```php
-@php
-    $titlesFields = [
+<x-dashboard.table-list
+    :titleFields="[
         'ID' => 'id',
         'Имя' => 'first_name',
         'Фамилия' => 'last_name',
         'Электронная почта' => 'email',
-    ];
-@endphp
-
-<x-dashboard.table-list
-    :titleFields="$titlesFields"
+    ]"
     :items="$users"
-    :pagination="true" //default false
-    :extraButtons="true" //default false
+    :pagination="true"
+    :extraButtons="true"
 />
 ```  
 
