@@ -1,4 +1,7 @@
-@props(['text' => '', 'color' => 'primary'])
+@props([
+    'text' => '',
+    'color' => 'primary'
+])
 
 <a {{$attributes->merge([
     'href' => '#',

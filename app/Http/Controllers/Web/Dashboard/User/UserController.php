@@ -45,7 +45,8 @@ class UserController extends BaseUserController
     {
         $this->repository->update($request->validated(), $user);
 
-        return redirect(route('dashboard.users.show', $user));
+        return redirect(route('dashboard.users.show', $user))
+            ->with('status', __('Пользователь обновлен'));;
     }
 
     public function destroy(User $user)

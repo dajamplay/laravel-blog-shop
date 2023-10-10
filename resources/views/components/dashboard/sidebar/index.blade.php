@@ -1,7 +1,7 @@
 <div class="sidebar">
     <a href="{{ route('dashboard.index')}}" class="brand-link">
-        <i class="fas fa-wifi text-success"></i>
-        <span class="brand-text font-weight-light">Admin Panel</span>
+        <i class="fas fa-wifi text-success mx-2"></i>
+        <span class="brand-text font-weight-light">{{__('Web ARM')}}</span>
     </a>
     <nav class="mt-2 pb-5">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

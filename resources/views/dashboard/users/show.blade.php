@@ -11,8 +11,7 @@
                 <x-dashboard.profile>
 
                     <x-dashboard.profile.head
-                        fullName="{{ $user->full_name }}"
-                        email="{{ $user->email }}"
+                        :model="$user"
                     />
 
                     <x-dashboard.profile.info
