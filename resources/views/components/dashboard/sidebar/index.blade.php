@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <a href="{{ route('dashboard.users.index')}}" class="brand-link">
+    <a href="{{ route('dashboard.index')}}" class="brand-link">
         <i class="fas fa-wifi text-success"></i>
         <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
