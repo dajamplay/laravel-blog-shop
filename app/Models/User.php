@@ -33,6 +33,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    public function getFullNameAttribute()
+    {
+        return "$this->first_name $this->last_name";
+    }
+
     public function scopeWithoutAdmins(Builder $query) : Builder
     {
         return $query->where('role', '!=', 'admin');

@@ -1,6 +1,5 @@
 @props([
-    'fistName' => 'не указано',
-    'lastName' => 'не указано',
+    'fullName' => 'не указано',
     'email' => 'не указано',
 ])
 
@@ -12,7 +11,7 @@
             <img class="profile-user-img img-fluid img-circle" src="{{ asset('admin/img/avatars/avatar4.png') }}" alt="{{__('Аватар пользователя')}}">
         </div>
 
-        <h3 class="profile-username text-center">{{ $fistName }} {{ $lastName }}</h3>
+        <h3 class="profile-username text-center">{{ $fullName }}</h3>
 
         <p class="text-muted text-center">{{ $email }}</p>
 
