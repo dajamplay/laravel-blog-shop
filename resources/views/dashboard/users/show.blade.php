@@ -1,31 +1,32 @@
 @extends('dashboard.layouts.main')
 
-@section('title', __('Данные пользователя'))
+@section('title', __('Профиль пользователя'))
 
 @section('content')
 
-    <table>
-        <tr>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->first_name }}</td>
-            <td>{{ $user->last_name }}</td>
-        </tr>
-    </table>
+    <div class="container-fluid">
 
-    @php
-        $titlesFields = [
-            'ID' => 'id',
-            'Имя' => 'first_name',
-            'Фамилия' => 'last_name',
-            'Электронная почта' => 'email',
-        ];
-    @endphp
+        <div class="row">
 
-    <x-dashboard.table-list
-        :titleFields="$titlesFields"
-        :items="[$user]"
-        :pagination="false"
-        :extraButtons="false"
-    />
+            <div class="col-md-6">
+
+                <x-dashboard.profile
+
+                    :model="$user"
+
+                    :titleFields="[
+                        'ID' => 'id',
+                        'Имя' => 'first_name',
+                        'Фамилия' => 'last_name',
+                        'Электронная почта' => 'email',
+                    ]">
+
+                </x-dashboard.profile>
+
+            </div>
+
+        </div>
+
+    </div>
 
 @endsection
