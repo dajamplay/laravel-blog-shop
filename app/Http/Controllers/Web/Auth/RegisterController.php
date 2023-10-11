@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Web\Auth;
 
+use App\Actions\Auth\RegisterStoreAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\RegisterRequest;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class RegisterController extends Controller
@@ -18,20 +16,9 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store(RegisterRequest $request) : RedirectResponse
+    public function store(RegisterRequest $request, RegisterStoreAction $action) : RedirectResponse
     {
-        $data = $request->validated();
-
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-
-        event(new Registered($user));
-
-        auth("web")->login($user);
+        $action->handle($request->validated());
 
         return redirect(RouteServiceProvider::HOME);
     }
