@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Admin\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Admin\StoreUserRequest;
 use App\Http\Requests\Web\Admin\UpdateUserRequest;
 use App\Models\User;
@@ -9,7 +10,7 @@ use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class UserController extends BaseUserController
+class UserController extends Controller
 {
     public function index(UserService $service) : View
     {

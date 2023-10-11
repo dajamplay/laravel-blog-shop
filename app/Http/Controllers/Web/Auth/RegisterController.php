@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web\Auth;
 
 use App\Actions\Auth\RegisterStoreAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Auth\RegisterRequest;
+use App\Http\Requests\Web\Admin\StoreUserRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -16,7 +16,10 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store(RegisterRequest $request, RegisterStoreAction $action) : RedirectResponse
+    public function store(
+        StoreUserRequest $request,
+        RegisterStoreAction $action
+    ) : RedirectResponse
     {
         $action->handle($request->validated());
 
