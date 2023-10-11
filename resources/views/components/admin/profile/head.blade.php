@@ -18,7 +18,7 @@
         @if($editButton)
             <div class="text-center">
 
-                <x-admin.ui.button
+                <x-ui.button
                     text="{{ __('Редактировать') }}"
                     href="{{ route('admin.users.edit', $model) }}"
                 />

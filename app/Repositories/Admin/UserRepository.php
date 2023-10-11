@@ -17,7 +17,7 @@ class UserRepository
         $this->query = $model->withoutAdmins();
     }
 
-    public function all() : LengthAwarePaginator
+    public function allWithPaginate() : LengthAwarePaginator
     {
         return $this->query->paginate(self::PER_PAGE);
     }

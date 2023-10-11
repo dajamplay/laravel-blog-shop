@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <x-admin.ui.button
+                <x-ui.button
                     text="{{__('Создать пользователя')}}"
                     href="{{ route('admin.users.create') }}"
                 />

@@ -5,18 +5,17 @@ namespace App\Http\Controllers\Web\Admin\User;
 use App\Http\Requests\Web\Admin\StoreUserRequest;
 use App\Http\Requests\Web\Admin\UpdateUserRequest;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class UserController extends BaseUserController
 {
-    public function index() : View
+    public function index(UserService $service) : View
     {
-        $users = $this->repository->all();
-
-        //$users = UsersIndexResource::collection($users);
-
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', [
+            'users' => $service->allWithPaginate()
+        ]);
     }
 
     public function create() : View
@@ -24,9 +23,12 @@ class UserController extends BaseUserController
         return view('admin.users.create');
     }
 
-    public function store(StoreUserRequest $request) : RedirectResponse
+    public function store(
+        StoreUserRequest $request,
+        UserService $service
+    ) : RedirectResponse
     {
-        $this->repository->store($request->validated());
+        $service->store($request->validated());
 
         return redirect(route('admin.users.index'));
     }
@@ -41,12 +43,16 @@ class UserController extends BaseUserController
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(UpdateUserRequest $request, User $user) : RedirectResponse
+    public function update(
+        UpdateUserRequest $request,
+        User $user,
+        UserService $service
+    ) : RedirectResponse
     {
-        $this->repository->update($request->validated(), $user);
+        $message = $service->update($request->validated(), $user);
 
         return redirect(route('admin.users.show', $user))
-            ->with('status', __('Пользователь обновлен'));;
+            ->with('message', $message);
     }
 
     public function destroy(User $user)

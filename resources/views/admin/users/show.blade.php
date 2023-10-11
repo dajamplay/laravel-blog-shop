@@ -8,6 +8,10 @@
         <div class="row">
             <div class="col-md-6">
 
+                <x-ui.session_alert
+                    message="message"
+                />
+
                 <x-admin.profile>
 
                     <x-admin.profile.head
