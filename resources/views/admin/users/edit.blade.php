@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 
 @section('title', __('Редактирование пользователя'))
 
@@ -9,14 +9,14 @@
 
         <div class="col-md-6">
 
-            <x-dashboard.profile.head
+            <x-admin.profile.head
                 :model="$user"
                 :editButton="false"
             />
 
-            <x-dashboard.form action="{{route('dashboard.users.update', $user)}}" method="put" >
+            <x-admin.form action="{{route('admin.users.update', $user)}}" method="put" >
 
-                <x-dashboard.form.input
+                <x-admin.form.input
                     label="{{__('Имя')}}"
                     placeholder="{{__('Введите имя')}}"
                     name="first_name"
@@ -24,7 +24,7 @@
                     :model="$user"
                 />
 
-                <x-dashboard.form.input
+                <x-admin.form.input
                     label="{{__('Фамилия')}}"
                     placeholder="{{__('Введите фамилию')}}"
                     name="last_name"
@@ -32,9 +32,9 @@
                     :model="$user"
                 />
 
-                <x-dashboard.form.button text="{{__('Сохранить изменения')}}" />
+                <x-admin.form.button text="{{__('Сохранить изменения')}}" />
 
-            </x-dashboard.form>
+            </x-admin.form>
 
         </div>
 

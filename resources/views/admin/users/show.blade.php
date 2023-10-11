@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 
 @section('title', __('Профиль пользователя'))
 
@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-md-6">
 
-                <x-dashboard.profile>
+                <x-admin.profile>
 
-                    <x-dashboard.profile.head
+                    <x-admin.profile.head
                         :model="$user"
                     />
 
-                    <x-dashboard.profile.info
+                    <x-admin.profile.info
                         :model="$user"
                         :titleFields="[
                             'ID' => 'id',
@@ -24,7 +24,7 @@
                         ]"
                     />
 
-                </x-dashboard.profile>
+                </x-admin.profile>
 
             </div>
         </div>

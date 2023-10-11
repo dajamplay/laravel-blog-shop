@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Web\Dashboard\User;
+namespace App\Http\Controllers\Web\Admin\User;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Dashboard\UserRepository;
+use App\Repositories\Admin\UserRepository;
 
 abstract class BaseUserController extends Controller
 {

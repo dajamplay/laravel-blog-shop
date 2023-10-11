@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Web\Dashboard\User;
+namespace App\Http\Controllers\Web\Admin\User;
 
-use App\Http\Requests\Web\Dashboard\StoreUserRequest;
-use App\Http\Requests\Web\Dashboard\UpdateUserRequest;
+use App\Http\Requests\Web\Admin\StoreUserRequest;
+use App\Http\Requests\Web\Admin\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -16,36 +16,36 @@ class UserController extends BaseUserController
 
         //$users = UsersIndexResource::collection($users);
 
-        return view('dashboard.users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     public function create() : View
     {
-        return view('dashboard.users.create');
+        return view('admin.users.create');
     }
 
     public function store(StoreUserRequest $request) : RedirectResponse
     {
         $this->repository->store($request->validated());
 
-        return redirect(route('dashboard.users.index'));
+        return redirect(route('admin.users.index'));
     }
 
     public function show(User $user) : View
     {
-        return view('dashboard.users.show', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     public function edit(User $user) : View
     {
-        return view('dashboard.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user) : RedirectResponse
     {
         $this->repository->update($request->validated(), $user);
 
-        return redirect(route('dashboard.users.show', $user))
+        return redirect(route('admin.users.show', $user))
             ->with('status', __('Пользователь обновлен'));;
     }
 

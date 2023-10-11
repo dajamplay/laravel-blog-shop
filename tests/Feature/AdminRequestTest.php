@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class DashboardRequestTest extends TestCase
+class AdminRequestTest extends TestCase
 {
     public function testGuestNotSeeDashboard(): void
     {
         $this->assertGuest();
 
-        $this->get(route('dashboard.index'))->assertStatus(302);
+        $this->get(route('admin.index'))->assertStatus(302);
     }
 
     public function testAdminSeeDashboard(): void
@@ -34,8 +34,8 @@ class DashboardRequestTest extends TestCase
 
         $this->actingAs($user, 'web');
 
-        $this->get(route('dashboard.index'))
+        $this->get(route('admin.index'))
             ->assertOk()
-            ->assertViewIs('dashboard.index');
+            ->assertViewIs('admin.index');
     }
 }

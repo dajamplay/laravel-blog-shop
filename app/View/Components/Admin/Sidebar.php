@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Dashboard;
+namespace App\View\Components\Admin;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -15,6 +15,6 @@ class Sidebar extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.sidebar.index');
+        return view('components.admin.sidebar.index');
     }
 }

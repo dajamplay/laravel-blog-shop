@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\View\Components\Dashboard\Sidebar;
+use App\View\Components\Admin\Sidebar;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;

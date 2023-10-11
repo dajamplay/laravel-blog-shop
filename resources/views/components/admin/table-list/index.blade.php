@@ -11,31 +11,31 @@
 
     <table {{ $attributes->merge(['class' => 'table table-hover text-nowrap mt-3']) }}>
 
-        <x-dashboard.table-list.thead :titles="array_keys($titleFields)" :extraButtons="$extraButtons"/>
+        <x-admin.table-list.thead :titles="array_keys($titleFields)" :extraButtons="$extraButtons"/>
 
-        <x-dashboard.table-list.tbody>
+        <x-admin.table-list.tbody>
             @foreach($items as $item)
-                <x-dashboard.table-list.tr>
+                <x-admin.table-list.tr>
                     @foreach($titleFields as $field)
-                        <x-dashboard.table-list.td>
+                        <x-admin.table-list.td>
                             {{ $item?->$field }}
-                        </x-dashboard.table-list.td>
+                        </x-admin.table-list.td>
                     @endforeach
                         @if($extraButtons === true)
-                            <x-dashboard.table-list.td>
-                                <x-dashboard.table-list.extrabuttons
+                            <x-admin.table-list.td>
+                                <x-admin.table-list.extrabuttons
                                     :item="$item"
                                 />
-                            </x-dashboard.table-list.td>
+                            </x-admin.table-list.td>
                         @endif
-                </x-dashboard.table-list.tr>
+                </x-admin.table-list.tr>
             @endforeach
-        </x-dashboard.table-list.tbody>
+        </x-admin.table-list.tbody>
 
     </table>
 
     @if($pagination === true)
-        <x-dashboard.table-list.pagination
+        <x-admin.table-list.pagination
             :items="$items"
         />
     @endif

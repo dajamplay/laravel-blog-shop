@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 
 @section('title', __('Пользователи'))
 
@@ -8,12 +8,12 @@
         <div class="row">
             <div class="col-md-12">
 
-                <x-dashboard.ui.button
+                <x-admin.ui.button
                     text="{{__('Создать пользователя')}}"
-                    href="{{ route('dashboard.users.create') }}"
+                    href="{{ route('admin.users.create') }}"
                 />
 
-                <x-dashboard.table-list
+                <x-admin.table-list
                     :titleFields="[
                         'ID' => 'id',
                         'Имя' => 'first_name',

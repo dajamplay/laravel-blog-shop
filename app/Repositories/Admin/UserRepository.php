@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Dashboard;
+namespace App\Repositories\Admin;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
