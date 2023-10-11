@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterStoreAction
 {
-    public function handle(array $data) : void
+    public function handle(array $data) : User
     {
         $user = User::create([
             'first_name' => $data['first_name'],
@@ -20,5 +20,7 @@ class RegisterStoreAction
         event(new Registered($user));
 
         auth("web")->login($user);
+
+        return $user;
     }
 }
