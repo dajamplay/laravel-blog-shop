@@ -6,9 +6,9 @@ use Illuminate\Contracts\Session\Session;
 
 class LogoutUserAction
 {
-    public function handle(Session $session) : void
+    public function handle(Session $session, string $guard) : void
     {
-        auth("web")->logout();
+        auth($guard)->logout();
 
         $session->invalidate();
 

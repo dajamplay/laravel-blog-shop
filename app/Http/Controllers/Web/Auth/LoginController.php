@@ -36,7 +36,10 @@ class LoginController extends Controller
 
     public function destroy(Request $request, LogoutUserAction $action) : RedirectResponse
     {
-        $action->handle($request->session());
+        $action->handle(
+            $request->session(),
+            'web'
+        );
 
         return redirect(RouteServiceProvider::HOME);
     }
