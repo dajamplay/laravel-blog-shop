@@ -3,19 +3,22 @@
 namespace App\Actions\Auth;
 
 use App\Models\User;
+use App\Repositories\Admin\UserRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterUserAction
 {
+    private UserRepository $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function handle(array $data) : User
     {
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = $this->userRepository->store($data);
 
         event(new Registered($user));
 
