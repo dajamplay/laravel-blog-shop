@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web\Auth;
 
-use App\Actions\Auth\LoginDestroyAction;
-use App\Actions\Auth\LoginStoreAction;
+use App\Actions\Auth\LogoutAction;
+use App\Actions\Auth\AuthAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -22,22 +22,20 @@ class LoginController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(LoginRequest $request, LoginStoreAction $action) : RedirectResponse
+    public function store(LoginRequest $request, AuthAction $action) : RedirectResponse
     {
-        $action->handle($request->validated(), $request->boolean('remember'));
-
-        $request->session()->regenerate();
+        $action->handle(
+            $request->validated(),
+            $request->boolean('remember'),
+            $request->session(),
+        );
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function destroy(Request $request, LoginDestroyAction $action) : RedirectResponse
+    public function destroy(Request $request, LogoutAction $action) : RedirectResponse
     {
-        $action->handle();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
+        $action->handle($request->session());
 
         return redirect(RouteServiceProvider::HOME);
     }

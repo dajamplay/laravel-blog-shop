@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterStoreAction
+class RegisterAction
 {
     public function handle(array $data) : User
     {
