@@ -5,14 +5,14 @@ namespace App\Actions\Auth;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Validation\ValidationException;
 
-class AuthAction
+class AuthUserAction
 {
     /**
      * @throws ValidationException
      */
-    public function handle(array $credentials, bool $remember, Session $session) : void
+    public function handle(array $credentials, bool $remember, Session $session, string $guard) : void
     {
-        if(!auth("web")->attempt($credentials, $remember)) {
+        if(!auth($guard)->attempt($credentials, $remember)) {
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed')
             ]);

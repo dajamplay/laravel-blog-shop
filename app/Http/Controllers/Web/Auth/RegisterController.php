@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web\Auth;
 
-use App\Actions\Auth\RegisterAction;
+use App\Actions\Auth\RegisterUserAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Admin\StoreUserRequest;
 use App\Providers\RouteServiceProvider;
@@ -18,7 +18,7 @@ class RegisterController extends Controller
 
     public function store(
         StoreUserRequest $request,
-        RegisterAction $action
+        RegisterUserAction $action
     ) : RedirectResponse
     {
         $action->handle($request->validated());

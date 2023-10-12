@@ -49,5 +49,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->where('role', '!=', 'admin');
         //return $query->whereRole('user');
     }
-
 }
