@@ -21,7 +21,7 @@ class RegisterController extends Controller
         RegisterUserAction $action
     ) : RedirectResponse
     {
-        $action->handle($request->validated());
+        $action->handle($request->validated(), 'web');
 
         return redirect(RouteServiceProvider::HOME);
     }

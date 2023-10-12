@@ -16,13 +16,13 @@ class RegisterUserAction
         $this->userRepository = $userRepository;
     }
 
-    public function handle(array $data) : User
+    public function handle(array $data, string $guard) : User
     {
         $user = $this->userRepository->store($data);
 
         event(new Registered($user));
 
-        auth("web")->login($user);
+        auth($guard)->login($user);
 
         return $user;
     }
