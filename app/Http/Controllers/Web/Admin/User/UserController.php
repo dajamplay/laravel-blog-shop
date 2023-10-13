@@ -10,50 +10,50 @@ use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class UserController extends Controller
+final class UserController extends Controller
 {
-    public function index(UserService $service) : View
+    public function index(UserService $service): View
     {
         return view('admin.users.index', [
             'users' => $service->allWithPaginate()
         ]);
     }
 
-    public function create() : View
+    public function create(): View
     {
         return view('admin.users.create');
     }
 
     public function store(
         StoreUserRequest $request,
-        UserService $service
-    ) : RedirectResponse
+        UserService      $service
+    ): RedirectResponse
     {
         $service->store($request->validated());
 
         return redirect(route('admin.users.index'));
     }
 
-    public function show(User $user) : View
+    public function show(User $user): View
     {
         return view('admin.users.show', compact('user'));
     }
 
-    public function edit(User $user) : View
+    public function edit(User $user): View
     {
         return view('admin.users.edit', compact('user'));
     }
 
     public function update(
         UpdateUserRequest $request,
-        User $user,
-        UserService $service
-    ) : RedirectResponse
+        User              $user,
+        UserService       $service
+    ): RedirectResponse
     {
-        $message = $service->update($request->validated(), $user);
+        $service->update($request->validated(), $user);
 
         return redirect(route('admin.users.show', $user))
-            ->with('message', $message);
+            ->with('message', __('Пользователь обновлен'));
     }
 
     public function destroy(User $user)

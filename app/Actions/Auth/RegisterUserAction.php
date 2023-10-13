@@ -3,9 +3,8 @@
 namespace App\Actions\Auth;
 
 use App\Models\User;
-use App\Repositories\Admin\UserRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
 
 class RegisterUserAction
 {
@@ -16,7 +15,7 @@ class RegisterUserAction
         $this->userRepository = $userRepository;
     }
 
-    public function handle(array $data, string $guard) : User
+    public function handle(array $data, string $guard): User
     {
         $user = $this->userRepository->store($data);
 

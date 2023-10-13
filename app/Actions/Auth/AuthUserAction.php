@@ -10,9 +10,9 @@ class AuthUserAction
     /**
      * @throws ValidationException
      */
-    public function handle(array $credentials, bool $remember, Session $session, string $guard) : void
+    public function handle(array $credentials, bool $remember, Session $session, string $guard): void
     {
-        if(!auth($guard)->attempt($credentials, $remember)) {
+        if (!auth($guard)->attempt($credentials, $remember)) {
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed')
             ]);

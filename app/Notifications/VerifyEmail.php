@@ -2,18 +2,18 @@
 
 namespace App\Notifications;
 
+use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailBase;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailBase;
 
 class VerifyEmail extends VerifyEmailBase
 {
-    protected function buildMailMessage($url)
+    protected function buildMailMessage($url): MailMessage
     {
         return (new MailMessage)
-            ->subject(Lang::get('Custom: Verify Email Address'))
-            ->line(Lang::get('Custom: Please click the button below to verify your email address.'))
-            ->action(Lang::get('Custom: Verify Email Address'), $url)
-            ->line(Lang::get('Custom: If you did not create an account, no further action is required.'));
+            ->subject(Lang::get('Подтвердите адрес электронной почты'))
+            ->line(Lang::get('Пожалуйста, нажмите на кнопку ниже, чтобы подтвердить свой адрес электронной почты.'))
+            ->action(Lang::get('Подтвердите адрес электронной почты'), $url)
+            ->line(Lang::get('Если вы не создавали учетную запись, никаких дальнейших действий не требуется.'));
     }
 }

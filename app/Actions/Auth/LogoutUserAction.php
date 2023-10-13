@@ -6,7 +6,7 @@ use Illuminate\Contracts\Session\Session;
 
 class LogoutUserAction
 {
-    public function handle(Session $session, string $guard) : void
+    public function handle(Session $session, string $guard): void
     {
         auth($guard)->logout();
 
