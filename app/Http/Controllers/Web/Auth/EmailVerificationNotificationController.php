@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class EmailVerificationNotificationController extends Controller
 {
-    public function __invoke(Request $request, AuthService $service): RedirectResponse
+    public function __invoke(Request $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
             return redirect()->intended(RouteServiceProvider::HOME);
@@ -18,8 +18,6 @@ class EmailVerificationNotificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        $status = $service->generateAccessMessageForForm();
-
-        return back()->with('status', $status);
+        return back()->with('status', trans('custom.auth.email_verify'));
     }
 }
