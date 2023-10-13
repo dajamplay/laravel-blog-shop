@@ -50,10 +50,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return "$this->first_name $this->last_name";
     }
-
-    public function scopeWithoutAdmins(Builder $query): Builder
-    {
-        return $query->where('role', '!=', 'admin');
-        //return $query->whereRole('user');
-    }
 }
