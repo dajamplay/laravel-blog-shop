@@ -11,8 +11,8 @@ class UserStoreDto
         public readonly string $first_name,
         public readonly string $last_name,
         public readonly string $email,
-        public readonly string|null $password,
-        public readonly Carbon|string|null $birthday,
+        public readonly string $password,
+        public readonly ?Carbon $birthday,
     ) {}
 
     public static function fromRequest(StoreUserRequest $request): UserStoreDto
