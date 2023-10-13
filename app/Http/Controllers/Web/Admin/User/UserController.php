@@ -53,7 +53,7 @@ final class UserController extends Controller
         $service->update($request->validated(), $user);
 
         return redirect(route('admin.users.show', $user))
-            ->with('message', __('Пользователь обновлен'));
+            ->with('message', trans('custom.user.updated'));
     }
 
     public function destroy(User $user)
