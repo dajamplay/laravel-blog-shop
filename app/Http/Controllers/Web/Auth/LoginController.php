@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web\Auth;
 
-use App\Actions\Auth\LogoutUserAction;
 use App\Actions\Auth\AuthUserAction;
+use App\Actions\Auth\LogoutUserAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -14,7 +14,7 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-    public function create() : View
+    public function create(): View
     {
         return view('auth.login');
     }
@@ -22,7 +22,7 @@ class LoginController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(LoginRequest $request, AuthUserAction $action) : RedirectResponse
+    public function store(LoginRequest $request, AuthUserAction $action): RedirectResponse
     {
         $action->handle(
             $request->validated(),
@@ -34,7 +34,7 @@ class LoginController extends Controller
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function destroy(Request $request, LogoutUserAction $action) : RedirectResponse
+    public function destroy(Request $request, LogoutUserAction $action): RedirectResponse
     {
         $action->handle(
             $request->session(),

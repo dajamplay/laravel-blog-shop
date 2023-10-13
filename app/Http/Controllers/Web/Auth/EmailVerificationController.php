@@ -10,7 +10,7 @@ use Illuminate\View\View;
 
 class EmailVerificationController extends Controller
 {
-    public function __invoke(Request $request) : View | RedirectResponse
+    public function __invoke(Request $request): View|RedirectResponse
     {
         return $request->user()->hasVerifiedEmail()
             ? redirect()->intended(RouteServiceProvider::HOME)

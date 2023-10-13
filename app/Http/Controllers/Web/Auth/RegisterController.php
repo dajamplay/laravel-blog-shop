@@ -11,15 +11,15 @@ use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
-    public function create() : View
+    public function create(): View
     {
         return view('auth.register');
     }
 
     public function store(
-        StoreUserRequest $request,
+        StoreUserRequest   $request,
         RegisterUserAction $action
-    ) : RedirectResponse
+    ): RedirectResponse
     {
         $action->handle($request->validated(), 'web');
 

@@ -21,13 +21,13 @@
                             {{ $item?->$field }}
                         </x-admin.table-list.td>
                     @endforeach
-                        @if($extraButtons === true)
-                            <x-admin.table-list.td>
-                                <x-admin.table-list.extrabuttons
-                                    :item="$item"
-                                />
-                            </x-admin.table-list.td>
-                        @endif
+                    @if($extraButtons === true)
+                        <x-admin.table-list.td>
+                            <x-admin.table-list.extrabuttons
+                                :item="$item"
+                            />
+                        </x-admin.table-list.td>
+                    @endif
                 </x-admin.table-list.tr>
             @endforeach
         </x-admin.table-list.tbody>

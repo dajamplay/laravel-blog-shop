@@ -8,7 +8,8 @@
 
         <a class="btn btn-success btn-sm" href="{{ route('admin.users.show', $item) }}">{{ __('Подробнее') }}</a>
 
-        <a class="btn btn-primary btn-sm mx-2" href="{{ route('admin.users.edit', $item) }}">{{ __('Редактировать') }}</a>
+        <a class="btn btn-primary btn-sm mx-2"
+           href="{{ route('admin.users.edit', $item) }}">{{ __('Редактировать') }}</a>
 
         <form action="{{ route('admin.users.destroy', $item) }}" method="post">
             @csrf

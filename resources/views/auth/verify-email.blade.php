@@ -18,7 +18,8 @@
                 <form action="{{ route('verification.send') }}" method="post">
                     @csrf
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">{{ __('отправить подтверждение почты') }}</button>
+                        <button type="submit"
+                                class="btn btn-primary btn-block">{{ __('отправить подтверждение почты') }}</button>
                     </div>
                 </form>
             </div>
