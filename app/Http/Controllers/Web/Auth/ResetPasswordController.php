@@ -7,20 +7,20 @@ use App\Http\Requests\Web\Auth\ResetPasswordRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
 {
-    public function create(Request $request) : View
+    public function create(Request $request): View
     {
         return view('auth.reset-password', [
             'request' => $request
         ]);
     }
 
-    public function store(ResetPasswordRequest $request) : RedirectResponse
+    public function store(ResetPasswordRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
