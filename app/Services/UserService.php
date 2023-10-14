@@ -25,8 +25,8 @@ class UserService
         $this->repository->store($data);
     }
 
-    public function update(array $data, User $user): void
+    public function update(array $data, User $user): bool
     {
-        $this->repository->update($data, $user);
+        return $this->repository->update($data, $user);
     }
 }

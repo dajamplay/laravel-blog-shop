@@ -7,6 +7,7 @@ use App\Http\Requests\Web\Admin\StoreUserRequest;
 use App\Http\Requests\Web\Admin\UpdateUserRequest;
 use App\Models\User;
 use App\Services\UserService;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -45,12 +46,17 @@ final class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(
         UpdateUserRequest $request,
         User              $user,
         UserService       $service
     ): RedirectResponse
     {
+        $this->authorize('update', $user);
+
         $service->update($request->validated(), $user);
 
         return redirect(route('admin.users.show', $user))
