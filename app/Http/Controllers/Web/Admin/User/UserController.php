@@ -31,7 +31,8 @@ final class UserController extends Controller
     {
         $service->store($request->validated());
 
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.users.index'))
+            ->with('message', trans('custom.user.created'));
     }
 
     public function show(User $user): View
