@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Http\Filters\UserFilter;
 use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserService
@@ -16,9 +17,12 @@ class UserService
         $this->repository = $repository;
     }
 
-    public function allWithPaginate(array $data = []): LengthAwarePaginator
+    /**
+     * @throws BindingResolutionException
+     */
+    public function allWithPaginate(array $queryData = []): LengthAwarePaginator
     {
-        $filter = app()->make(UserFilter::class, ['queryParams' => array_filter($data)]);
+        $filter = app()->make(UserFilter::class, ['queryParams' => array_filter($queryData)]);
 
         return $this->repository->allWithPaginate($filter);
     }

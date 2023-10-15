@@ -26,6 +26,7 @@ abstract class AbstractFilter implements FilterInterface
 
     protected function before(Builder $builder)
     {
+        //
     }
 
     abstract protected function getCallbacks(): array;

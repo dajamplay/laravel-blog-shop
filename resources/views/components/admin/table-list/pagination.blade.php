@@ -3,5 +3,5 @@
 ])
 
 <div {{ $attributes->merge(['class' => 'mt-2']) }}>
-    {{ $items->links() }}
+    {{ $items->withQueryString()->links() }}
 </div>

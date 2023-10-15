@@ -10,6 +10,15 @@ class UserFilter extends AbstractFilter
     public const LAST_NAME = 'last_name';
     public const EMAIL = 'email';
 
+    protected function getCallbacks(): array
+    {
+        return [
+            self::FIRST_NAME => [$this, 'firstName'],
+            self::LAST_NAME => [$this, 'lastName'],
+            self::EMAIL => [$this, 'email'],
+        ];
+    }
+
     public function firstName(Builder $builder, string $value)
     {
         $builder->where(self::FIRST_NAME, 'like', "%$value%");
@@ -23,14 +32,5 @@ class UserFilter extends AbstractFilter
     public function email(Builder $builder, string $value)
     {
         $builder->where(self::EMAIL, 'like', "%$value%");
-    }
-
-    protected function getCallbacks(): array
-    {
-        return [
-            self::FIRST_NAME => [$this, 'firstName'],
-            self::LAST_NAME => [$this, 'lastName'],
-            self::EMAIL => [$this, 'email'],
-        ];
     }
 }

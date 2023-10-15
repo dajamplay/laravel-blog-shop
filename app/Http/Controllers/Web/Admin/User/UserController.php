@@ -27,7 +27,9 @@ final class UserController extends Controller
     public function index(UserService $service, Request $request): View
     {
         return view('admin.users.index', [
-            'users' => $service->allWithPaginate($request->all())
+            'users' => $service->allWithPaginate(
+                $request->query->all()
+            )
         ]);
     }
 
