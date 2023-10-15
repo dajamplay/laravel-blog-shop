@@ -11,8 +11,8 @@ Route::prefix('admin')
     ])
     ->group( function () {
 
-    Route::get('/', [Admin\AdminController::class, 'index'])->name('index');
+    Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
 
-    Route::resource('users', Admin\User\UserController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
 });

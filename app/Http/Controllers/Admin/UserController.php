@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Web\Admin\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Admin\StoreUserRequest;
-use App\Http\Requests\Web\Admin\UpdateUserRequest;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\User;
 use App\Services\UserService;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -59,9 +58,6 @@ final class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function update(
         UpdateUserRequest $request,
         User              $user,

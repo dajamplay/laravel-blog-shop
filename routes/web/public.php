@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Public;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', [Public\PublicController::class, 'index'])->name('public.index');
+Route::get('/', [\App\Http\Controllers\Public\PublicController::class, 'index'])->name('public.index');
