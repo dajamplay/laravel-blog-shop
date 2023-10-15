@@ -6,6 +6,10 @@ use App\Models\User;
 
 class UserPolicy
 {
+    public function before(User $user): bool
+    {
+        return $user->role === User::ROLE_SUPER_ADMIN;
+    }
     /**
      * Determine whether the user can view any models.
      */
@@ -19,7 +23,7 @@ class UserPolicy
      */
     public function view(User $user, User $model): bool
     {
-        return $user->id === $model->id;
+
     }
 
     /**

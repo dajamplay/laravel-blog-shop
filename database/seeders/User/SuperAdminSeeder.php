@@ -2,7 +2,8 @@
 
 namespace Database\Seeders\User;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,7 @@ class SuperAdminSeeder extends Seeder
             'birthday' => fake()->dateTimeThisCentury(),
             'remember_token' => Str::random(10),
             'email_verified_at' => now(),
-            'role' => 'admin'
+            'role' => USER::ROLE_SUPER_ADMIN
         ]);
     }
 }

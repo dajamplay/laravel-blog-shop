@@ -8,15 +8,26 @@ use App\Http\Requests\Web\Admin\UpdateUserRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class UserController extends Controller
 {
-    public function index(UserService $service): View
+
+//    public function __construct()
+//    {
+//        $this->authorize('before');
+//    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    public function index(UserService $service, Request $request): View
     {
         return view('admin.users.index', [
-            'users' => $service->allWithPaginate()
+            'users' => $service->allWithPaginate($request->all())
         ]);
     }
 
@@ -55,8 +66,6 @@ final class UserController extends Controller
         UserService       $service
     ): RedirectResponse
     {
-        $this->authorize('update', $user);
-
         $service->update($request->validated(), $user);
 
         return redirect(route('admin.users.show', $user))

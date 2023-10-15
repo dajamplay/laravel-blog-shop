@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Filters\UserFilter;
 use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -15,9 +16,11 @@ class UserService
         $this->repository = $repository;
     }
 
-    public function allWithPaginate(): LengthAwarePaginator
+    public function allWithPaginate(array $data = []): LengthAwarePaginator
     {
-        return $this->repository->allWithPaginate();
+        $filter = app()->make(UserFilter::class, ['queryParams' => array_filter($data)]);
+
+        return $this->repository->allWithPaginate($filter);
     }
 
     public function store(array $data): void

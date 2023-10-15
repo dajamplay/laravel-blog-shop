@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use App\Notifications\ResetPasswordEmail;
 use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -12,7 +13,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Filterable;
+
+    const ROLE_SUPER_ADMIN = 7;
+    const ROLE_USER = 1;
 
     protected $fillable = [
         'email',
@@ -35,17 +39,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    public function sendEmailVerificationNotification()
+    public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmail);
     }
 
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPasswordEmail($token));
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return "$this->first_name $this->last_name";
     }

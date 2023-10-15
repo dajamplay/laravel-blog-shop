@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Filters\UserFilter;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -9,10 +10,11 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
     const PER_PAGE = 10;
 
-    public function allWithPaginate(): LengthAwarePaginator
+    public function allWithPaginate(UserFilter $filter): LengthAwarePaginator
     {
         return $this->startConditions()
             ->query()
+            ->filter($filter)
             ->paginate(self::PER_PAGE);
     }
 
